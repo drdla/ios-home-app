@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" width="158" height="140" viewBox="0 0 158 140">
+<defs>
+<clipPath id="clip_1">
+<path transform="matrix(1,0,0,-1,0,140)" d="M0 140H158V0H0Z"/>
+</clipPath>
+</defs>
+<g inkscape:groupmode="layer" inkscape:label="Layer 1">
+<g clip-path="url(#clip_1)">
+<path transform="matrix(1,0,0,-1,113.2275,70.7762)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="#000000" d="M0 0C0-19.118-15.499-34.617-34.618-34.617-53.737-34.617-69.236-19.118-69.236 0-69.236 19.119-53.737 34.618-34.618 34.618-15.499 34.618 0 19.119 0 0Z"/>
+<path transform="matrix(1,0,0,-1,78.6094,30.426499)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="#000000" d="M0 0V13.783"/>
+<path transform="matrix(1,0,0,-1,50.2241,24.682404)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="#000000" d="M0 0 6.898-11.948"/>
+<path transform="matrix(1,0,0,-1,57.1221,36.6306)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="#000000" d="M0 0-6.898 11.948"/>
+<path transform="matrix(1,0,0,-1,30.46,46.0486)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="#000000" d="M0 0 11.951-6.899"/>
+<path transform="matrix(1,0,0,-1,118.8301,73.8474)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="#000000" d="M0 0H13.82"/>
+<path transform="matrix(1,0,0,-1,126.7593,46.0486)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="#000000" d="M0 0-11.951-6.899"/>
+<path transform="matrix(1,0,0,-1,114.8081,52.947999)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="#000000" d="M0 0 11.951 6.899"/>
+<path transform="matrix(1,0,0,-1,106.9951,24.682404)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="#000000" d="M0 0-6.898-11.948"/>
+<path transform="matrix(1,0,0,-1,124.0952,100.1082)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="#000000" d="M0 0-11.948 6.897"/>
+<path transform="matrix(1,0,0,-1,97.439,106.4617)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="#000000" d="M0 0 6.9-11.95"/>
+<path transform="matrix(1,0,0,-1,33.124,100.1082)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="#000000" d="M0 0 11.948 6.897"/>
+<path transform="matrix(1,0,0,-1,38.3887,73.8474)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="#000000" d="M0 0H-13.819"/>
+<path transform="matrix(1,0,0,-1,78.6094,124.908)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="#000000" d="M0 0V13.783"/>
+<path transform="matrix(1,0,0,-1,59.7798,106.4617)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="#000000" d="M0 0-6.9-11.95"/>
+<path transform="matrix(1,0,0,-1,52.8799,118.411899)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="#000000" d="M0 0 6.9 11.95"/>
+<path transform="matrix(1,0,0,-1,45.0718,93.2107)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="#000000" d="M0 0-11.948-6.897"/>
+</g>
+</g>
+</svg>

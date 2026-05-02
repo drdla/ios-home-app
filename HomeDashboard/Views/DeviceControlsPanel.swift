@@ -36,11 +36,15 @@ private struct ShortcutTileView: View {
 
     var body: some View {
         GeometryReader { geo in
+            let iconSize = geo.size.height * 0.50
+
             VStack(spacing: 10) {
-                Image(systemName: tile.iconName)
-                    .font(.system(size: geo.size.height * 0.28, weight: .thin))
-                    .foregroundStyle(Color.textSecondary)
-                    .frame(width: geo.size.height * 0.36, height: geo.size.height * 0.36)
+                Image(tile.iconName)
+                    .resizable()
+                    .renderingMode(.template)
+                    .aspectRatio(contentMode: .fit)
+                    .foregroundStyle(Color.textPrimary)
+                    .frame(width: iconSize, height: iconSize)
 
                 Text(tile.title)
                     .font(DashboardFont.thin(Layout.fontSizeSmall))

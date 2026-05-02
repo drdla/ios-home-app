@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" width="158" height="140" viewBox="0 0 158 140">
+<defs>
+<clipPath id="clip_1">
+<path transform="matrix(1,0,0,-1,0,140)" d="M0 140H158V0H0Z"/>
+</clipPath>
+</defs>
+<g inkscape:groupmode="layer" inkscape:label="Layer 1">
+<path transform="matrix(1,0,0,-1,98.2774,112)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="#000000" d="M0 0H-33.231L-34.729 31.39H1.498L0 0Z"/>
+<g clip-path="url(#clip_1)">
+<path transform="matrix(1,0,0,-1,98.7745,46.541)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="#000000" d="M0 0C-11.368-12.521-18.113-26.39-17.325-34.069-18.113-26.153-26.121-6.425-29.528-1.86"/>
+<path transform="matrix(1,0,0,-1,69.6236,56.3535)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="#000000" d="M0 0H-.063C-2.377 .019-4.536 .995-6.309 2.826-7.81 4.375-8.695 7.289-9.725 10.664-10.75 14.03-11.911 17.846-13.665 19.6-14.064 20-14.185 20.602-13.968 21.125-13.753 21.647-13.242 21.988-12.676 21.988-4.946 21.988 2.118 18.966 5.102 15.982 8.468 12.613 9.815 6.126 6.5 2.812 4.713 1.023 2.347 0 0 0Z"/>
+<path transform="matrix(1,0,0,-1,96.8746,62.7183)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="#000000" d="M0 0C-3.314 0-6.626 1.085-9.468 3.656-11.789 5.754-13.062 8.754-13.151 12.33-13.273 17.269-11.058 22.757-7.506 26.31-1.613 32.204 6.663 34.718 20.164 34.718 20.704 34.718 21.192 34.393 21.398 33.894 21.604 33.394 21.489 32.82 21.108 32.438 17.661 28.988 17.191 23.487 16.737 18.167 16.314 13.214 15.915 8.538 13.091 5.713 9.695 2.319 4.844 0 0 0Z"/>
+</g>
+</g>
+</svg>

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" width="158" height="140" viewBox="0 0 158 140">
+<defs>
+<clipPath id="clip_1">
+<path transform="matrix(1,0,0,-1,0,140)" d="M0 140H158V0H0Z"/>
+</clipPath>
+</defs>
+<g inkscape:groupmode="layer" inkscape:label="Layer 1">
+<path transform="matrix(1,0,0,-1,66.0147,27.530098)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="#000000" d="M0 0 6.152-8.025"/>
+<path transform="matrix(1,0,0,-1,87.1915,28.997803)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="#000000" d="M0 0-1.314 10.018"/>
+<path transform="matrix(1,0,0,-1,120.5626,56.7185)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="#000000" d="M0 0 10.043 1.318"/>
+<path transform="matrix(1,0,0,-1,115.6466,41.912904)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="#000000" d="M0 0 8.027 6.154"/>
+<path transform="matrix(1,0,0,-1,107.273,22.115998)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="#000000" d="M0 0-3.874-9.341"/>
+<g clip-path="url(#clip_1)">
+<path transform="matrix(1,0,0,-1,91.0391,32.947099)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="#000000" d="M0 0C-7.032 0-13.394-2.861-17.99-7.481-5.873-8.256 4.37-15.919 8.847-26.606 11.211-25.812 13.74-25.374 16.372-25.374 19.535-25.374 22.55-26.001 25.307-27.129 25.347-26.549 25.375-25.965 25.375-25.374 25.375-11.36 14.014 0 0 0Z"/>
+<path transform="matrix(1,0,0,-1,100.0958,105.5477)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="#000000" d="M0 0H7.315C20.356 0 30.928 10.572 30.928 23.613 30.928 36.654 20.356 47.227 7.315 47.227 4.683 47.227 2.154 46.789-.21 45.994-4.935 57.272-16.075 65.195-29.067 65.195-45.252 65.195-58.565 52.901-60.179 37.142-67.935 34.753-73.573 27.531-73.573 18.991-73.573 8.503-65.07 0-54.581 0H-49.397"/>
+<path transform="matrix(1,0,0,-1,80.4263,72.95)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="#000000" d="M0 0 14.305-3.154 7.152-33.905-2.871-28.636-18.868-50.764-10.583-15.447-2.047-21.611 0 0Z"/>
+</g>
+</g>
+</svg>

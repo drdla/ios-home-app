@@ -125,12 +125,12 @@ extension DashboardSnapshot {
             ])
         ],
         shortcutTiles: [
-            ShortcutTile(title: "Licht",      iconName: "lightbulb"),
-            ShortcutTile(title: "Musik",      iconName: "music.note"),
-            ShortcutTile(title: "Geräte",     iconName: "poweroutlet.type.b"),
-            ShortcutTile(title: "Pflanzen",   iconName: "leaf"),
-            ShortcutTile(title: "Lüftung",    iconName: "wind"),
-            ShortcutTile(title: "Sicherheit", iconName: "lock.shield")
+            ShortcutTile(title: "Licht",      iconName: "lighting"),
+            ShortcutTile(title: "Musik",      iconName: "music"),
+            ShortcutTile(title: "Geräte",     iconName: "appliance"),
+            ShortcutTile(title: "Pflanzen",   iconName: "plant"),
+            ShortcutTile(title: "Lüftung",    iconName: "ventilation"),
+            ShortcutTile(title: "Sicherheit", iconName: "security")
         ],
         door: DoorSnapshot(title: "Haustür", isAvailable: true),
         lock: LockSnapshot(state: .locked)

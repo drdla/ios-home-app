@@ -32,7 +32,7 @@ struct DoorPanel: View {
                 HStack {
                     // Open door
                     ActionButton(
-                        systemImage: "key.horizontal",
+                        iconAsset: "unlock",
                         tint: Color.buttonOpen,
                         accessibilityLabel: "Tür öffnen"
                     ) {
@@ -44,7 +44,7 @@ struct DoorPanel: View {
 
                     // Intercom / speak
                     ActionButton(
-                        systemImage: "speaker.wave.2",
+                        iconAsset: "speek",
                         tint: Color.buttonSpeak,
                         accessibilityLabel: "Gegensprechanlage"
                     ) {
@@ -96,7 +96,7 @@ private struct DoorBirdFeedView: View {
 // MARK: - Action button (circular)
 
 private struct ActionButton: View {
-    let systemImage: String
+    let iconAsset: String
     let tint: Color
     let accessibilityLabel: String
     let action: () -> Void
@@ -107,9 +107,12 @@ private struct ActionButton: View {
                 Circle()
                     .fill(tint)
                     .frame(width: 84, height: 84)
-                Image(systemName: systemImage)
-                    .font(.system(size: 32, weight: .thin))
+                Image(iconAsset)
+                    .resizable()
+                    .renderingMode(.template)
+                    .aspectRatio(contentMode: .fit)
                     .foregroundStyle(Color.white)
+                    .frame(width: 56, height: 56)
             }
         }
         .accessibilityLabel(accessibilityLabel)
@@ -127,9 +130,12 @@ private struct MuteButton: View {
                 Circle()
                     .fill(Color.surface.opacity(0.85))
                     .frame(width: 63, height: 63)
-                Image(systemName: muted ? "speaker.slash" : "speaker.wave.2")
-                    .font(.system(size: 24, weight: .thin))
+                Image(muted ? "speek" : "mute")
+                    .resizable()
+                    .renderingMode(.template)
+                    .aspectRatio(contentMode: .fit)
                     .foregroundStyle(Color.textPrimary)
+                    .frame(width: 36, height: 36)
             }
         }
         .accessibilityLabel(muted ? "Ton ein" : "Ton aus")
