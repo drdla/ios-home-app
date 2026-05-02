@@ -1,0 +1,66 @@
+name: HomeDashboard
+options:
+  bundleIdPrefix: de.dominikrodler
+  deploymentTarget:
+    iOS: "16.0"
+  xcodeVersion: "15.0"
+  createIntermediateGroups: true
+
+settings:
+  base:
+    SWIFT_VERSION: "5.9"
+    TARGETED_DEVICE_FAMILY: "2"          # iPad only
+    IPHONEOS_DEPLOYMENT_TARGET: "16.0"
+    SUPPORTS_MACCATALYST: NO
+    ENABLE_PREVIEWS: YES
+    DEBUG_INFORMATION_FORMAT: dwarf-with-dsym
+
+schemes:
+  HomeDashboard:
+    build:
+      targets:
+        HomeDashboard: all
+    run:
+      config: Debug
+    test:
+      config: Debug
+      targets:
+        - HomeDashboardTests
+    profile:
+      config: Release
+    analyze:
+      config: Debug
+    archive:
+      config: Release
+
+targets:
+  HomeDashboard:
+    type: application
+    platform: iOS
+    sources:
+      - path: HomeDashboard
+        excludes:
+          - "**/.DS_Store"
+    info:
+      path: HomeDashboard/Info.plist
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: de.dominikrodler.HomeDashboard
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        INFOPLIST_FILE: HomeDashboard/Info.plist
+        CURRENT_PROJECT_VERSION: 1
+        MARKETING_VERSION: 1.0
+
+  HomeDashboardTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: Tests/HomeDashboardCoreTests
+    dependencies:
+      - target: HomeDashboard
+        embed: false
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: de.dominikrodler.HomeDashboardTests
+        TEST_HOST: "$(BUILT_PRODUCTS_DIR)/HomeDashboard.app/HomeDashboard"
+        BUNDLE_LOADER: "$(TEST_HOST)"

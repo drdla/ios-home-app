@@ -1,0 +1,29 @@
+# Xcode build artefacts
+build/
+.build/
+*.xcodeproj/xcuserdata/
+*.xcodeproj/project.xcworkspace/xcuserdata/
+*.xcworkspace/xcuserdata/
+DerivedData/
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# Swift Package Manager
+.build/
+Packages/
+Package.resolved
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+**/.DS_Store
+
+# Credentials – never commit
+*.p12
+*.mobileprovision
+
+# Xcode local settings
+*.xcuserstate
+xcuserdata/
