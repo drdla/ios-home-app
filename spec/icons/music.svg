@@ -1,15 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" width="158" height="140" viewBox="0 0 158 140">
-<defs>
-<clipPath id="clip_1">
-<path transform="matrix(1,0,0,-1,0,140)" d="M0 140H158V0H0Z"/>
-</clipPath>
-</defs>
-<g inkscape:groupmode="layer" inkscape:label="Layer 1">
-<g clip-path="url(#clip_1)">
-<path transform="matrix(1,0,0,-1,64.1256,101.2466)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="#000000" d="M0 0C0-5.536-6.52-10.024-14.563-10.024-22.607-10.024-29.127-5.536-29.127 0-29.127 5.537-22.607 10.024-14.563 10.024-6.52 10.024 0 5.537 0 0Z"/>
-<path transform="matrix(1,0,0,-1,116.2863,85.818408)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="#000000" d="M0 0C0-5.536-6.521-10.024-14.564-10.024-22.607-10.024-29.127-5.536-29.127 0-29.127 5.536-22.607 10.024-14.564 10.024-6.521 10.024 0 5.536 0 0Z"/>
-<path transform="matrix(1,0,0,-1,64.1256,101.2466)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="#000000" d="M0 0V60.447L52.161 75.743V15.186"/>
-<path transform="matrix(1,0,0,-1,64.1256,52.4487)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke="#000000" d="M0 0 52.161 15.296"/>
-</g>
-</g>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 659 584" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;">
+    <g transform="matrix(1,0,0,1,-11.722066,-656.25)">
+        <g id="music" transform="matrix(4.166667,0,0,4.166667,11.722066,656.25)">
+            <rect x="0" y="0" width="158" height="140" style="fill:none;"/>
+            <g id="Layer-1" serif:id="Layer 1">
+                <g transform="matrix(0,-1,-1,0,49.5621,86.6831)">
+                    <ellipse cx="-14.564" cy="0" rx="10.024" ry="14.564" style="fill:none;stroke:black;stroke-width:1px;"/>
+                </g>
+                <g transform="matrix(0,-1,-1,0,101.7228,71.2549)">
+                    <ellipse cx="-14.564" cy="0" rx="10.024" ry="14.564" style="fill:none;stroke:black;stroke-width:1px;"/>
+                </g>
+                <g transform="matrix(1,0,0,1,64.1256,25.5036)">
+                    <path d="M0,75.743L0,15.296L52.161,0L52.161,60.557" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+                </g>
+                <g transform="matrix(0.959592,-0.281396,-0.281396,-0.959592,67.331589,59.478614)">
+                    <path d="M-1.098,7.648L53.259,7.648" style="fill:none;fill-rule:nonzero;stroke:black;stroke-width:1px;"/>
+                </g>
+            </g>
+        </g>
+    </g>
 </svg>

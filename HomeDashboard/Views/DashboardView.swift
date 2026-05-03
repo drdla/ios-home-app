@@ -5,19 +5,25 @@ import SwiftUI
 struct DashboardView: View {
     @EnvironmentObject private var vm: AppViewModel
 
+    // Small optical nudge so the iPad status bar does not sit on top of the first row.
+    // Do not use the full safe-area/status-bar height here; it creates a visible gap
+    // and squeezes the bottom DoorBird preview.
+    private let topContentOffset: CGFloat = 5
+
     var body: some View {
         GeometryReader { geo in
             let scale = min(
                 geo.size.width / Layout.screenWidth,
-                geo.size.height / Layout.screenHeight
+                (geo.size.height - topContentOffset) / Layout.screenHeight
             )
             ZStack {
-                Color.black.ignoresSafeArea()
+                Color.surface.ignoresSafeArea()
                 DashboardCanvas()
                     .environmentObject(vm)
                     .frame(width: Layout.screenWidth, height: Layout.screenHeight)
                     .scaleEffect(scale)
-                    .frame(width: geo.size.width, height: geo.size.height, alignment: .top)
+                    .frame(width: geo.size.width, height: geo.size.height - topContentOffset, alignment: .top)
+                    .offset(y: topContentOffset)
             }
         }
         .ignoresSafeArea()
@@ -68,7 +74,10 @@ private struct DashboardCanvas: View {
 
             // ── Section 3: Home Automation + Door ──────────────────────
             HStack(spacing: 0) {
-                DeviceControlsPanel(tiles: vm.shortcutTiles)
+                DeviceControlsPanel(
+                    tiles: vm.shortcutTiles,
+                    destinations: ["solar": .solarbank]
+                )
                     .frame(width: 407.5)
                 DoorPanel(door: vm.door, lock: vm.lock)
                     .frame(width: 360.5)

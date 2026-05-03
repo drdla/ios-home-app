@@ -9,6 +9,20 @@ struct ClockPanel: View {
     @State private var showSettings = false
     private let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
+    private var hourString: String {
+        let h = Calendar.current.component(.hour, from: now)
+        return "\(h)"   // no leading zero
+    }
+
+    private var minuteString: String {
+        let m = Calendar.current.component(.minute, from: now)
+        return String(format: "%02d", m)
+    }
+
+    private var hasLeadingZero: Bool {
+        Calendar.current.component(.hour, from: now) < 10
+    }
+
     var body: some View {
         VStack(alignment: .center, spacing: 0) {
             // Day name – e.g. "Montag"
@@ -16,16 +30,29 @@ struct ClockPanel: View {
                 .font(DashboardFont.thin(Layout.fontSizeLarge))
                 .foregroundStyle(Color.textTertiary)
                 .frame(maxWidth: .infinity, alignment: .center)
-                .padding(.top, 0)
+                .padding(.top, 3)
 
             Spacer(minLength: 2)
 
-            // Time – large digits, leading zero on hours
-            Text(now.formatted(.dateTime.hour(.twoDigits(amPM: .omitted)).minute().locale(Locale(identifier: "de_DE"))))
-                .font(DashboardFont.thin(Layout.fontSizeXLarge))
-                .foregroundStyle(Color.textSecondary)
-                .monospacedDigit()
-                .frame(maxWidth: .infinity, alignment: .center)
+            // Time – leading zero dimmed when present, separator grey, digits white
+            HStack(alignment: .firstTextBaseline, spacing: 0) {
+                if hasLeadingZero {
+                    Text("0")
+                        .foregroundStyle(Color.textSecondary)
+                    Text(hourString)
+                        .foregroundStyle(Color.textPrimary)
+                } else {
+                    Text(hourString)
+                        .foregroundStyle(Color.textPrimary)
+                }
+                Text(":")
+                    .foregroundStyle(Color.textSecondary)
+                Text(minuteString)
+                    .foregroundStyle(Color.textPrimary)
+            }
+            .font(DashboardFont.thin(Layout.fontSizeXLarge))
+            .monospacedDigit()
+            .frame(maxWidth: .infinity, alignment: .center)
 
             Spacer(minLength: 2)
 
@@ -34,7 +61,7 @@ struct ClockPanel: View {
                 .font(DashboardFont.thin(Layout.fontSizeLarge))
                 .foregroundStyle(Color.textTertiary)
                 .frame(maxWidth: .infinity, alignment: .center)
-                .padding(.bottom, 0)
+                .padding(.bottom, 3)
         }
         .padding(.horizontal, 0)
         .frame(maxWidth: .infinity, maxHeight: .infinity)

@@ -10,7 +10,13 @@ struct HomeDashboardApp: App {
                 .environmentObject(viewModel)
                 .preferredColorScheme(.dark)
                 .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
-                    Task { await viewModel.refreshOnForeground() }
+                    Task {
+                        await viewModel.refreshOnForeground()
+                        viewModel.startPeriodicRefresh()
+                    }
+                }
+                .onReceive(NotificationCenter.default.publisher(for: UIApplication.willResignActiveNotification)) { _ in
+                    viewModel.stopPeriodicRefresh()
                 }
         }
     }

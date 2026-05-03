@@ -19,6 +19,10 @@ public struct WeatherSnapshot: Equatable {
     var tomorrowLowCelsius: Int
     var precipitationChancePercent: Int
     var condition: WeatherCondition
+    /// Hourly temperatures for today, indices 0–23 (°C). Empty = fall back to synthetic curve.
+    var hourlyTemperatures: [Double]
+    /// Hourly precipitation probability for today, indices 0–23 (0–100). Empty = fall back to synthetic curve.
+    var hourlyPrecipitationChances: [Int]
 }
 
 public enum WeatherCondition: String, Equatable {
@@ -98,7 +102,16 @@ extension DashboardSnapshot {
             tomorrowHighCelsius: 18,
             tomorrowLowCelsius: 9,
             precipitationChancePercent: 6,
-            condition: .sunny
+            condition: .sunny,
+            // Realistic summer day in Dachau: cool morning, peak ~24° at 14:00, mild evening.
+            hourlyTemperatures: [
+                14, 13, 13, 12, 12, 13, 15, 17, 19, 21, 22, 23,
+                24, 24, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15
+            ],
+            hourlyPrecipitationChances: [
+                 4,  4,  4,  3,  3,  3,  3,  4,  4,  5,  5,  6,
+                 6,  6,  7,  7,  6,  6,  5,  5,  4,  4,  4,  4
+            ]
         ),
         calendarEvents: [
             CalendarEvent(title: "Caffè Dominik",        startHour: 8,  endHour: 11, column: 0, colorName: "teal"),
@@ -113,7 +126,8 @@ extension DashboardSnapshot {
                 ]),
                 TransitSection(title: "Richtung Altomünster", departures: [
                     TransitDeparture(line: "S2", destination: "Altomünster", planned: mockDate(9, 27), realtime: mockDate(9, 27), cancelled: false),
-                    TransitDeparture(line: "S2", destination: "Altomünster", planned: mockDate(9, 57), realtime: mockDate(9, 57), cancelled: false)
+                    TransitDeparture(line: "S2", destination: "Altomünster", planned: mockDate(9, 57), realtime: mockDate(9, 57), cancelled: false),
+                    TransitDeparture(line: "S2", destination: "Altomünster", planned: mockDate(10, 27), realtime: mockDate(10, 27), cancelled: false)
                 ])
             ]),
             TransitStopGroup(name: "Dachau Bahnhof", sections: [
@@ -125,12 +139,13 @@ extension DashboardSnapshot {
             ])
         ],
         shortcutTiles: [
-            ShortcutTile(title: "Licht",      iconName: "lighting"),
-            ShortcutTile(title: "Musik",      iconName: "music"),
+            ShortcutTile(title: "Solar",      iconName: "solar"),
             ShortcutTile(title: "Geräte",     iconName: "appliance"),
-            ShortcutTile(title: "Pflanzen",   iconName: "plant"),
+            ShortcutTile(title: "Licht",      iconName: "lighting"),
+            ShortcutTile(title: "Temperatur", iconName: "temperature"),
             ShortcutTile(title: "Lüftung",    iconName: "ventilation"),
-            ShortcutTile(title: "Sicherheit", iconName: "security")
+            ShortcutTile(title: "Pflanzen",   iconName: "plant"),
+            ShortcutTile(title: "Musik",      iconName: "music"),
         ],
         door: DoorSnapshot(title: "Haustür", isAvailable: true),
         lock: LockSnapshot(state: .locked)
@@ -159,7 +174,7 @@ enum TransitGrouper {
             guard let deps = buckets[title] else { return nil }
             return TransitSection(
                 title: title,
-                departures: Array(deps.sorted { $0.realtime < $1.realtime }.prefix(2))
+                departures: Array(deps.sorted { $0.realtime < $1.realtime }.prefix(3))
             )
         }
     }

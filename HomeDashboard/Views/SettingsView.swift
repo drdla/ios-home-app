@@ -1,4 +1,5 @@
 import SwiftUI
+import EventKit
 
 /// Settings panel – opened via a long-press on the clock.
 /// Stores non-sensitive settings in UserDefaults; credentials go to Keychain.
@@ -12,6 +13,7 @@ struct SettingsView: View {
     @State private var tedeeKey = ""
     @State private var tedeeLockId = ""
     @State private var showSaved = false
+    @State private var availableCalendars: [EKCalendar] = []
 
     var body: some View {
         NavigationStack {
@@ -32,6 +34,41 @@ struct SettingsView: View {
                             .multilineTextAlignment(.trailing)
                             .keyboardType(.decimalPad)
                     }
+                }
+
+                // MARK: Calendar
+                Section {
+                    if availableCalendars.isEmpty {
+                        Text("Kein Kalenderzugriff")
+                            .foregroundStyle(.secondary)
+                    } else {
+                        ForEach(availableCalendars, id: \.calendarIdentifier) { cal in
+                            let id = cal.calendarIdentifier
+                            let isEnabled = settings.enabledCalendarIdentifiers.isEmpty
+                                || settings.enabledCalendarIdentifiers.contains(id)
+                            Button {
+                                toggleCalendar(id)
+                            } label: {
+                                HStack(spacing: 12) {
+                                    Circle()
+                                        .fill(Color(cgColor: cal.cgColor))
+                                        .frame(width: 12, height: 12)
+                                    Text(cal.title)
+                                        .foregroundStyle(Color.primary)
+                                    Spacer()
+                                    if isEnabled {
+                                        Image(systemName: "checkmark")
+                                            .foregroundStyle(.blue)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                } header: {
+                    Text("Kalender")
+                } footer: {
+                    Text("Alle Kalender sind aktiv, wenn keine Auswahl getroffen wurde.")
+                        .font(.caption)
                 }
 
                 // MARK: Transit
@@ -102,8 +139,53 @@ struct SettingsView: View {
                 Button("OK") { dismiss() }
             }
         }
-        .onAppear(perform: loadCredentials)
+        .onAppear {
+            loadCredentials()
+            loadCalendars()
+        }
         .preferredColorScheme(.dark)
+    }
+
+    // MARK: - Helpers
+
+    private func loadCalendars() {
+        let store = EKEventStore()
+        Task {
+            let granted: Bool
+            if #available(iOS 17.0, *) {
+                granted = (try? await store.requestFullAccessToEvents()) ?? false
+            } else {
+                granted = (try? await store.requestAccess(to: .event)) ?? false
+            }
+            guard granted else { return }
+            await MainActor.run {
+                availableCalendars = store.calendars(for: .event)
+                    .sorted { $0.title < $1.title }
+            }
+        }
+    }
+
+    private func toggleCalendar(_ id: String) {
+        var ids = settings.enabledCalendarIdentifiers
+
+        // On first tap, "all enabled" (empty set) should become
+        // "all except this one", so we materialise the full set first.
+        if ids.isEmpty {
+            ids = Set(availableCalendars.map { $0.calendarIdentifier })
+        }
+
+        if ids.contains(id) {
+            ids.remove(id)
+        } else {
+            ids.insert(id)
+        }
+
+        // If everything is checked again, collapse back to "all" (empty set).
+        if ids.count == availableCalendars.count {
+            ids = []
+        }
+
+        settings.enabledCalendarIdentifiers = ids
     }
 
     private func loadCredentials() {

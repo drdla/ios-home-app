@@ -19,19 +19,54 @@ final class AppViewModel: ObservableObject {
     private let transitService: TransitService
     private let doorBirdService: DoorBirdService
     private let tedeeService: TedeeService
+    private let settings: AppSettings
+
+    private var timerTasks: [Task<Void, Never>] = []
 
     init(
         weatherService: WeatherService = .live,
         calendarService: CalendarService = .live,
         transitService: TransitService = .live,
         doorBirdService: DoorBirdService = .live,
-        tedeeService: TedeeService = .live
+        tedeeService: TedeeService = .live,
+        settings: AppSettings = .shared
     ) {
         self.weatherService = weatherService
         self.calendarService = calendarService
         self.transitService = transitService
         self.doorBirdService = doorBirdService
         self.tedeeService = tedeeService
+        self.settings = settings
+    }
+
+    // MARK: - Foreground lifecycle
+
+    func startPeriodicRefresh() {
+        stopPeriodicRefresh()
+        let transitInterval  = settings.transitRefreshInterval
+        let weatherInterval  = settings.weatherRefreshInterval
+        let calendarInterval = settings.calendarRefreshInterval
+
+        timerTasks = [
+            makeTimer(interval: transitInterval,  work: refreshTransit),
+            makeTimer(interval: weatherInterval,  work: refreshWeather),
+            makeTimer(interval: calendarInterval, work: refreshCalendar),
+        ]
+    }
+
+    func stopPeriodicRefresh() {
+        timerTasks.forEach { $0.cancel() }
+        timerTasks = []
+    }
+
+    private func makeTimer(interval: TimeInterval, work: @escaping () async -> Void) -> Task<Void, Never> {
+        Task {
+            while !Task.isCancelled {
+                try? await Task.sleep(for: .seconds(interval))
+                guard !Task.isCancelled else { break }
+                await work()
+            }
+        }
     }
 
     func refreshOnForeground() async {
@@ -48,7 +83,7 @@ final class AppViewModel: ObservableObject {
         isLoading = false
     }
 
-    // MARK: Individual refreshes
+    // MARK: - Individual refreshes
 
     func refreshWeather() async {
         do {

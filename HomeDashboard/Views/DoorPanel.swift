@@ -44,7 +44,7 @@ struct DoorPanel: View {
 
                     // Intercom / speak
                     ActionButton(
-                        iconAsset: "speek",
+                        iconAsset: "intercom",
                         tint: Color.buttonSpeak,
                         accessibilityLabel: "Gegensprechanlage"
                     ) {
@@ -112,7 +112,7 @@ private struct ActionButton: View {
                     .renderingMode(.template)
                     .aspectRatio(contentMode: .fit)
                     .foregroundStyle(Color.white)
-                    .frame(width: 56, height: 56)
+                    .frame(width: 70, height: 70)
             }
         }
         .accessibilityLabel(accessibilityLabel)
@@ -130,15 +130,15 @@ private struct MuteButton: View {
                 Circle()
                     .fill(Color.surface.opacity(0.85))
                     .frame(width: 63, height: 63)
-                Image(muted ? "speek" : "mute")
+                Image(muted ? "unmute" : "mute")
                     .resizable()
                     .renderingMode(.template)
                     .aspectRatio(contentMode: .fit)
                     .foregroundStyle(Color.textPrimary)
-                    .frame(width: 36, height: 36)
+                    .frame(width: 50, height: 50)
             }
         }
-        .accessibilityLabel(muted ? "Ton ein" : "Ton aus")
+        .accessibilityLabel(muted ? "Ton an" : "Ton aus")
     }
 }
 

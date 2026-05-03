@@ -59,8 +59,7 @@ private struct WeatherGraphPanel: View {
                 y: 24
             )
 
-            TemperatureBarChart(low: weather.currentLowCelsius,
-                                high: weather.currentTemperatureCelsius)
+            TemperatureBarChart(weather: weather)
                 .frame(width: chartWidth, height: 30)
                 .position(x: 96, y: 72)
 
@@ -73,7 +72,7 @@ private struct WeatherGraphPanel: View {
                 y: 118
             )
 
-            PrecipitationBarChart(chance: weather.precipitationChancePercent)
+            PrecipitationBarChart(weather: weather)
                 .frame(width: chartWidth, height: 18)
                 .position(x: 96, y: 153)
         }
@@ -154,8 +153,7 @@ struct WeatherTodayPanel: View {
                         .padding(.leading, Layout.panelPadding)
 
                     // Temperature bar chart (schematic)
-                    TemperatureBarChart(low: weather.currentLowCelsius,
-                                        high: weather.currentTemperatureCelsius)
+                    TemperatureBarChart(weather: weather)
                         .frame(height: 24)
                         .padding(.horizontal, Layout.panelPadding)
 
@@ -173,7 +171,7 @@ struct WeatherTodayPanel: View {
                     .padding(.leading, Layout.panelPadding)
 
                     // Precipitation bar chart
-                    PrecipitationBarChart(chance: weather.precipitationChancePercent)
+                    PrecipitationBarChart(weather: weather)
                         .frame(height: 24)
                         .padding(.horizontal, Layout.panelPadding)
                         .padding(.bottom, Layout.panelPadding)
@@ -264,21 +262,19 @@ private struct TomorrowWeatherIconPanel: View {
     }
 }
 
-// MARK: - Temperature bar chart (schematic – matches mockup visual style)
+// MARK: - Temperature bar chart
 
 private struct TemperatureBarChart: View {
-    let low: Int
-    let high: Int
+    let weather: WeatherSnapshot
     private var currentHour: Int { Calendar.current.component(.hour, from: Date()) }
 
     var body: some View {
         GeometryReader { geo in
             HStack(spacing: 1) {
                 ForEach(0..<24, id: \.self) { i in
-                    let fraction = barFraction(hour: i)
                     RoundedRectangle(cornerRadius: 1)
                         .fill(i == currentHour ? Color.textPrimary : Color.textTertiary.opacity(0.65))
-                        .frame(height: max(4, geo.size.height * fraction))
+                        .frame(height: max(4, geo.size.height * barFraction(hour: i)))
                         .frame(maxHeight: geo.size.height, alignment: .bottom)
                 }
             }
@@ -286,32 +282,46 @@ private struct TemperatureBarChart: View {
     }
 
     private func barFraction(hour: Int) -> Double {
-        // Bell curve peaking at hour 14
-        let center = 14.0
-        let spread = 6.0
-        let raw = exp(-pow(Double(hour) - center, 2) / (2 * spread * spread))
-        return 0.2 + 0.8 * raw
+        let temps = weather.hourlyTemperatures
+        guard temps.count == 24 else {
+            // Synthetic fallback: bell curve peaking at 14:00
+            let raw = exp(-pow(Double(hour) - 14.0, 2) / (2 * 6.0 * 6.0))
+            return 0.2 + 0.8 * raw
+        }
+        let lo = temps.min() ?? 0
+        let hi = temps.max() ?? 1
+        guard hi > lo else { return 0.5 }
+        return 0.15 + 0.85 * ((temps[hour] - lo) / (hi - lo))
     }
 }
 
 // MARK: - Precipitation bar chart
 
 private struct PrecipitationBarChart: View {
-    let chance: Int
+    let weather: WeatherSnapshot
     private var currentHour: Int { Calendar.current.component(.hour, from: Date()) }
 
     var body: some View {
         GeometryReader { geo in
             HStack(spacing: 1) {
                 ForEach(0..<24, id: \.self) { i in
-                    let fraction = max(0.08, Double(chance) / 100.0 * (0.5 + 0.5 * sin(Double(i) / 3.0)))
                     RoundedRectangle(cornerRadius: 1)
                         .fill(i == currentHour ? Color.textPrimary : Color.textTertiary.opacity(0.65))
-                        .frame(height: max(2, geo.size.height * fraction))
+                        .frame(height: max(2, geo.size.height * barFraction(hour: i)))
                         .frame(maxHeight: geo.size.height, alignment: .bottom)
                 }
             }
         }
+    }
+
+    private func barFraction(hour: Int) -> Double {
+        let chances = weather.hourlyPrecipitationChances
+        guard chances.count == 24 else {
+            // Synthetic fallback: sine wave scaled by current chance
+            let chance = Double(weather.precipitationChancePercent)
+            return max(0.08, chance / 100.0 * (0.5 + 0.5 * sin(Double(hour) / 3.0)))
+        }
+        return max(0.08, Double(chances[hour]) / 100.0)
     }
 }
 

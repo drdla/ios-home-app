@@ -23,6 +23,12 @@ final class AppSettings: ObservableObject {
         didSet { UserDefaults.standard.set(transitDepartureLimit, forKey: Keys.depLimit) }
     }
 
+    // Calendar – set of EKCalendar.calendarIdentifier strings to show.
+    // Empty means "show all" (default until the user makes a selection).
+    @Published var enabledCalendarIdentifiers: Set<String> {
+        didSet { UserDefaults.standard.set(Array(enabledCalendarIdentifiers), forKey: Keys.calendarIds) }
+    }
+
     // Tedee control mode
     @Published var tedeeMode: TedeeMode {
         didSet { UserDefaults.standard.set(tedeeMode.rawValue, forKey: Keys.tedeeMode) }
@@ -35,12 +41,14 @@ final class AppSettings: ObservableObject {
 
     private init() {
         let d = UserDefaults.standard
-        homeLat              = d.object(forKey: Keys.homeLat)    as? Double ?? 48.2600
-        homeLon              = d.object(forKey: Keys.homeLon)    as? Double ?? 11.4342
+        homeLat              = d.object(forKey: Keys.homeLat)    as? Double ?? 48.26698246733924
+        homeLon              = d.object(forKey: Keys.homeLon)    as? Double ?? 11.437766913838852
         transitStationId     = d.string(forKey: Keys.stationId)  ?? "de:09174:6850"
         transitDepartureLimit = d.object(forKey: Keys.depLimit)  as? Int ?? 10
         let modeRaw          = d.string(forKey: Keys.tedeeMode)  ?? TedeeMode.cloud.rawValue
         tedeeMode            = TedeeMode(rawValue: modeRaw) ?? .cloud
+        let savedIds         = d.stringArray(forKey: Keys.calendarIds) ?? []
+        enabledCalendarIdentifiers = Set(savedIds)
     }
 
     enum TedeeMode: String, CaseIterable, Identifiable {
@@ -59,10 +67,11 @@ final class AppSettings: ObservableObject {
     }
 
     private enum Keys {
-        static let homeLat   = "home.lat"
-        static let homeLon   = "home.lon"
-        static let stationId = "transit.stationId"
-        static let depLimit  = "transit.limit"
-        static let tedeeMode = "tedee.mode"
+        static let homeLat     = "home.lat"
+        static let homeLon     = "home.lon"
+        static let stationId   = "transit.stationId"
+        static let depLimit    = "transit.limit"
+        static let tedeeMode   = "tedee.mode"
+        static let calendarIds = "calendar.enabledIds"
     }
 }

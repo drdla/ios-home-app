@@ -22,7 +22,16 @@ struct CalendarService {
         let cal = Calendar.current
         let start = cal.startOfDay(for: Date())
         let end   = cal.date(byAdding: .day, value: 1, to: start)!
-        let predicate = store.predicateForEvents(withStart: start, end: end, calendars: nil)
+
+        // Resolve which EKCalendars to query.
+        // An empty enabledCalendarIdentifiers means "show all".
+        let enabledIds = AppSettings.shared.enabledCalendarIdentifiers
+        let allCalendars = store.calendars(for: .event)
+        let filtered = enabledIds.isEmpty
+            ? allCalendars
+            : allCalendars.filter { enabledIds.contains($0.calendarIdentifier) }
+
+        let predicate = store.predicateForEvents(withStart: start, end: end, calendars: filtered.isEmpty ? nil : filtered)
         let ekEvents = store.events(matching: predicate)
 
         return ekEvents.compactMap { CalendarEvent(from: $0) }

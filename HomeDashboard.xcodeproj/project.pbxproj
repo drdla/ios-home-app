@@ -19,6 +19,7 @@
 		55A9B3A4061E693D105391A8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CCB7E7E7F24CA4A49FDCECC /* Assets.xcassets */; };
 		600D58730FCB3E0D64EAD684 /* SecretsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B28EB6D0FB30E47DD39C50F /* SecretsStore.swift */; };
 		8201047689BFD01D9B8969A9 /* ClockPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D33DCDE6A60B8AF31E45EB /* ClockPanel.swift */; };
+		843F891AE240A8C92EF6BA48 /* SolarbankDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB9802520FD750548DD8BD9B /* SolarbankDetailView.swift */; };
 		84F429DF8D3CF701A94DE58E /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93482DACAABE2BA3D96720C8 /* DashboardView.swift */; };
 		933696C487589673329F4A18 /* CalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D1C8007008A749D3E70CF9 /* CalendarService.swift */; };
 		B3266D65B5EFF5DBC13EDDE1 /* DoorBirdService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55A7DD92664952DFB753DF41 /* DoorBirdService.swift */; };
@@ -66,7 +67,8 @@
 		DA22871B1FAA116A94ED87FD /* WeatherPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherPanel.swift; sourceTree = "<group>"; };
 		DC3FCDC55486F6649D701F79 /* TransitPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitPanel.swift; sourceTree = "<group>"; };
 		E9EBF3CD3A53E9F88C75D4C8 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
-		ECD454AF00217C9453EE9210 /* HomeDashboard.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = HomeDashboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ECD454AF00217C9453EE9210 /* HomeDashboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomeDashboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB9802520FD750548DD8BD9B /* SolarbankDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolarbankDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -91,6 +93,7 @@
 				389A14E3DEC3AB32AFD46BF9 /* DeviceControlsPanel.swift */,
 				423680BFFECE32729CE3F379 /* DoorPanel.swift */,
 				E9EBF3CD3A53E9F88C75D4C8 /* SettingsView.swift */,
+				FB9802520FD750548DD8BD9B /* SolarbankDetailView.swift */,
 				B49788AFEFEECE1122658168 /* TasksPanel.swift */,
 				DC3FCDC55486F6649D701F79 /* TransitPanel.swift */,
 				DA22871B1FAA116A94ED87FD /* WeatherPanel.swift */,
@@ -228,8 +231,6 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1500;
-				TargetAttributes = {
-				};
 			};
 			buildConfigurationList = 29CD77B6CE9BFE97EAE55DF9 /* Build configuration list for PBXProject "HomeDashboard" */;
 			developmentRegion = en;
@@ -289,6 +290,7 @@
 				0B59577F5C9AF7177342D9E6 /* HomeDashboardApp.swift in Sources */,
 				600D58730FCB3E0D64EAD684 /* SecretsStore.swift in Sources */,
 				3F64F8A17D49552891303843 /* SettingsView.swift in Sources */,
+				843F891AE240A8C92EF6BA48 /* SolarbankDetailView.swift in Sources */,
 				27E1D5C4EDE50DF6D6482235 /* TasksPanel.swift in Sources */,
 				B6C816568CC8C6645984E16F /* TedeeService.swift in Sources */,
 				0448C70353AB619F2D52CACE /* TransitPanel.swift in Sources */,
@@ -406,6 +408,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8XHZ62H5L9;
 				INFOPLIST_FILE = HomeDashboard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -490,6 +493,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8XHZ62H5L9;
 				INFOPLIST_FILE = HomeDashboard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
